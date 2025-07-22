@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: frontend-renderer
+spec:
+  template:
+    spec:
+      containers:
+      - image: marinazhdanova/bookstore-frontend_renderer:latest
+        ports:
+        - containerPort: 3005
+        env:
+        - name: DATABASE_URI
+          value: "mongodb://mongodb:testmongo@mongo:27017/exercise-1?authSource=admin"
