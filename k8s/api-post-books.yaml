@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: api-post-books
+spec:
+  template:
+    spec:
+      containers:
+      - image: marinazhdanova/bookstore-api_post_books:latest
+        ports:
+        - containerPort: 3002
+        env:
+        - name: DATABASE_URI
+          value: "mongodb://mongodb:testmongo@mongo:27017/exercise-1?authSource=admin"
